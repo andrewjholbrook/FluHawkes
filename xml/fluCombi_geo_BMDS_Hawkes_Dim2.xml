@@ -65325,7 +65325,8 @@
 			<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 		</log>
 
-		<log id="locationsLog.h1" logEvery="500" fileName="output/h1_locations.log">
+	<!-- 
+	<log id="locationsLog.h1" logEvery="500" fileName="output/h1_locations.log">
 			<parameter idref="locations.h1"/>
 		</log>
 		<log id="locationsLog.h3" logEvery="500" fileName="output/h3_locations.log">
@@ -65337,6 +65338,7 @@
 		<log id="locationsLog.yam" logEvery="500" fileName="output/yam_locations.log">
 			<parameter idref="locations.yam"/>
 		</log>
+ -->
 		<log id="locationsLog.countries" logEvery="500" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
 			<parameter idref="countries"/>
 		</log>
