@@ -64742,10 +64742,10 @@
             <parameter id="omega.h1" value="0.02438852" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.h1" value="0.04791975" lower="0.0"/>
+            <parameter id="theta.h1" value="1" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.h1" value="0.49226404" lower="0.0"/>
+            <parameter id="mu0.h1" value="1" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -64772,10 +64772,10 @@
             <parameter id="omega.h3" value="0.02438852" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.h3" value="0.04791975" lower="0.0"/>
+            <parameter id="theta.h3" value="1" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.h3" value="0.49226404" lower="0.0"/>
+            <parameter id="mu0.h3" value="1" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -64802,10 +64802,10 @@
             <parameter id="omega.vic" value="0.02438852" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.vic" value="0.04791975" lower="0.0"/>
+            <parameter id="theta.vic" value="1" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.vic" value="0.49226404" lower="0.0"/>
+            <parameter id="mu0.vic" value="1" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -64832,10 +64832,10 @@
             <parameter id="omega.yam" value="0.02438852" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.yam" value="0.04791975" lower="0.0"/>
+            <parameter id="theta.yam" value="1" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.yam" value="0.49226404" lower="0.0"/>
+            <parameter id="mu0.yam" value="1" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -65042,7 +65042,7 @@
 			</fastCompoundMatrixParameter>
 		</locations>
 		<mdsPrecision>
-			<parameter id="mds.residual.precision" value="1.0" lower="0.0"/>
+			<parameter id="mds.residual.precision" value="2.0" lower="0.0"/>
 		</mdsPrecision>
 	</multidimensionalScalingLikelihood>
 
@@ -65074,7 +65074,7 @@
 
 	<operators id="operators" optimizationSchedule="log">
 
- 		<hamiltonianMonteCarloOperator weight="100" nSteps="10" autoOptimize="true" stepSize="1E-7" drawVariance="1.0">
+ 		<hamiltonianMonteCarloOperator weight="1" nSteps="10" autoOptimize="true" stepSize="0.01" drawVariance="1.0">
  		 	<jointGradient id="jointGradient">
  				<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 	 			<compoundGradient id="latentGradient">
@@ -65089,111 +65089,111 @@
  		</hamiltonianMonteCarloOperator>
 
 
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="mds.residual.precision"/>
 		</scaleOperator>
 		
 			<!-- h1 hawkes parameters  -->
 
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="sigmaXprec.h1"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauXprec.h1"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauTprec.h1"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="omega.h1"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="theta.h1"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="mu0.h1"/>
 		</scaleOperator>
 		
 					<!-- h3 hawkes parameters  -->
 
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="sigmaXprec.h3"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauXprec.h3"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauTprec.h3"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="omega.h3"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="theta.h3"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="mu0.h3"/>
 		</scaleOperator>
 		
 			<!-- yam hawkes parameters  -->
 
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="sigmaXprec.yam"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauXprec.yam"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauTprec.yam"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="omega.yam"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="theta.yam"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="mu0.yam"/>
 		</scaleOperator>
 		
 			<!-- vic hawkes parameters  -->
 
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="sigmaXprec.vic"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauXprec.vic"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="tauTprec.vic"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="omega.vic"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="theta.vic"/>
 		</scaleOperator>
 		
-		<scaleOperator scaleFactor="0.75" weight="10">
+		<scaleOperator scaleFactor="0.75" weight="1">
 			<parameter idref="mu0.vic"/>
 		</scaleOperator>
 
@@ -65205,7 +65205,7 @@
 
 
 
-	<mcmc id="mcmc" chainLength="2000000" fullEvaluation="1000" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
+	<mcmc id="mcmc" chainLength="10000000" fullEvaluation="1000" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
 		<posterior id="posterior">
 			<prior id="prior">
 				<gammaPrior shape="0.001" scale="1000" offset="0.0">
@@ -65214,79 +65214,79 @@
 				
 				<!--Xiang: need to constrain tauXprec < sigmaXprec and tauTprec < omega -->
 				<!-- h1 hawkes priors -->
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauXprec.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauTprec.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="omega.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="theta.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="mu0.h1"/>
 				</gammaPrior>	
 				<!-- h3 hawkes priors -->
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauXprec.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauTprec.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="omega.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="theta.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="mu0.h3"/>
 				</gammaPrior>
 				<!-- vic hawkes priors -->
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauXprec.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauTprec.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="omega.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="theta.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="mu0.vic"/>
-				</gammaPrior>		
+				</gammaPrior>	
 				<!-- yam hawkes priors -->
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauXprec.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="0.1" scale="1" offset="0.0">
 					<parameter idref="tauTprec.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="omega.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="theta.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.001" scale="1000" offset="0.0">
+				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="mu0.yam"/>
 				</gammaPrior>
 				<multivariateNormalPrior idref="countriesPrior"/>
@@ -65318,30 +65318,30 @@
 			</column>
 		</log>
 
-		<log id="fileLog" logEvery="1000" fileName="output/fluCombi_geo_BMDS_Hawkes_Country.log" overwrite="true">
+		<log id="fileLog" logEvery="5000" fileName="output/fluCombi_geo_BMDS_Hawkes_Country.log" overwrite="true">
 			<posterior idref="posterior"/>
 			<prior idref="prior"/>
 			<likelihood idref="likelihood"/>
 			<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 		</log>
 
-		<log id="locationsLog.h1" logEvery="1000" fileName="output/h1_locations.log">
+		<log id="locationsLog.h1" logEvery="5000" fileName="output/h1_locations.log">
 			<parameter idref="locations.h1"/>
 		</log>
-		<log id="locationsLog.h3" logEvery="1000" fileName="output/h3_locations.log">
+		<log id="locationsLog.h3" logEvery="5000" fileName="output/h3_locations.log">
 			<parameter idref="locations.h3"/>
 		</log>
-		<log id="locationsLog.vic" logEvery="1000" fileName="output/vic_locations.log">
+		<log id="locationsLog.vic" logEvery="5000" fileName="output/vic_locations.log">
 			<parameter idref="locations.vic"/>
 		</log>
-		<log id="locationsLog.yam" logEvery="1000" fileName="output/yam_locations.log">
+		<log id="locationsLog.yam" logEvery="5000" fileName="output/yam_locations.log">
 			<parameter idref="locations.yam"/>
 		</log>
 
-		<log id="locationsLog.countries" logEvery="1000" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
+		<log id="locationsLog.countries" logEvery="5000" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
 			<parameter idref="countries"/>
 		</log>
-		<log id="parametersLog" logEvery="1000" fileName="output/parameters.log">
+		<log id="parametersLog" logEvery="5000" fileName="output/parameters.log">
 			<parameter idref="mds.residual.precision"/>
 			<parameter idref="sigmaXprec.h1"/>
 			<parameter idref="tauXprec.h1"/>
