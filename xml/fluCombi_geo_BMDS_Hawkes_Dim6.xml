@@ -65042,7 +65042,7 @@
 			</fastCompoundMatrixParameter>
 		</locations>
 		<mdsPrecision>
-			<parameter id="mds.residual.precision" value="2.0" lower="0.0"/>
+			<parameter id="mds.residual.precision" value="10.0" lower="0.0"/>
 		</mdsPrecision>
 	</multidimensionalScalingLikelihood>
 
