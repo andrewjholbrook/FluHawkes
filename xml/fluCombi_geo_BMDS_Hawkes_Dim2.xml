@@ -64841,7 +64841,7 @@
 
 	
 
-	<multidimensionalScalingLikelihood id="mdsLikelihood" fileName="data/fluCombi_Deff_reordered_no0s.txt" mdsDimension="2">
+	<multidimensionalScalingLikelihood id="mdsLikelihood" fileName="data/fluCombi_Deff_reordered.txt" mdsDimension="2">
 		<locations>
 			<fastCompoundMatrixParameter id="allLocations">
 				<parameter idref="locations.h1"/>
@@ -65214,16 +65214,16 @@
 				
 				<!--Xiang: need to constrain tauXprec < sigmaXprec and tauTprec < omega -->
 				<!-- h1 hawkes priors -->
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="0.2" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="0.02" scale="1" offset="0.0">
 					<parameter idref="tauXprec.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="1.0" scale="1" offset="0.0">
 					<parameter idref="tauTprec.h1"/>
 				</gammaPrior>
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="10.0" scale="1" offset="0.0">
 					<parameter idref="omega.h1"/>
 				</gammaPrior>
 				<gammaPrior shape="1" scale="1" offset="0.0">
@@ -65233,16 +65233,16 @@
 					<parameter idref="mu0.h1"/>
 				</gammaPrior>	
 				<!-- h3 hawkes priors -->
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="0.2" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="0.02" scale="1" offset="0.0">
 					<parameter idref="tauXprec.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="1.0" scale="1" offset="0.0">
 					<parameter idref="tauTprec.h3"/>
 				</gammaPrior>
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="10.0" scale="1" offset="0.0">
 					<parameter idref="omega.h3"/>
 				</gammaPrior>
 				<gammaPrior shape="1" scale="1" offset="0.0">
@@ -65250,18 +65250,18 @@
 				</gammaPrior>
 				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="mu0.h3"/>
-				</gammaPrior>
+				</gammaPrior>	
 				<!-- vic hawkes priors -->
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="0.2" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="0.02" scale="1" offset="0.0">
 					<parameter idref="tauXprec.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="1.0" scale="1" offset="0.0">
 					<parameter idref="tauTprec.vic"/>
 				</gammaPrior>
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="10.0" scale="1" offset="0.0">
 					<parameter idref="omega.vic"/>
 				</gammaPrior>
 				<gammaPrior shape="1" scale="1" offset="0.0">
@@ -65271,16 +65271,16 @@
 					<parameter idref="mu0.vic"/>
 				</gammaPrior>	
 				<!-- yam hawkes priors -->
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="0.2" scale="1" offset="0.0">
 					<parameter idref="sigmaXprec.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="0.02" scale="1" offset="0.0">
 					<parameter idref="tauXprec.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="0.1" scale="1" offset="0.0">
+				<gammaPrior shape="1.0" scale="1" offset="0.0">
 					<parameter idref="tauTprec.yam"/>
 				</gammaPrior>
-				<gammaPrior shape="1" scale="1" offset="0.0">
+				<gammaPrior shape="10.0" scale="1" offset="0.0">
 					<parameter idref="omega.yam"/>
 				</gammaPrior>
 				<gammaPrior shape="1" scale="1" offset="0.0">
@@ -65288,7 +65288,7 @@
 				</gammaPrior>
 				<gammaPrior shape="1" scale="1" offset="0.0">
 					<parameter idref="mu0.yam"/>
-				</gammaPrior>
+				</gammaPrior>	
 				<multivariateNormalPrior idref="countriesPrior"/>
 			</prior>
 

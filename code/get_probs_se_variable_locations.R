@@ -19,6 +19,7 @@ yam_locations <- read_table2("output/yam_locations.log",
 parameters <- read_delim("output/parameters.log", 
                          "\t", escape_double = FALSE, trim_ws = TRUE, 
                          skip = 3)
+
 df <- readr::read_csv("data/coordinates_and_times.txt")
 df$strain <- c( rep("h1n1",1370),
                 rep("h3n2",1389),
@@ -59,9 +60,11 @@ df2 <- df[df$strain=="h1n1",]
 df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 pst <- t(as.matrix(parameters[,2:7]))
+pst[1,] <- pst[1,] + pst[2,] # back transform
+pst[4,] <- pst[3,] + pst[4,] # back transform
 
 # get probability child
-post_prob_child <- matrix(0,length(times),S)
+post_prob_child <- matrix(100,length(times),S)
 for (i in 1:S) {
   X <- matrix(as.numeric(unlist(h1_locs[[i]])), 1370, latent_dim)
   post_prob_child[,i] <- hpHawkes::probability_se(locations = X,
@@ -79,9 +82,11 @@ df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 # get posterior samples means
 pst <- t(as.matrix(parameters[,8:13]))
+pst[1,] <- pst[1,] + pst[2,] # back transform
+pst[4,] <- pst[3,] + pst[4,] # back transform
 
 # get probability child
-post_prob_child <- matrix(0,length(times),S)
+post_prob_child <- matrix(100,length(times),S)
 for (i in 1:S) {
   X <- matrix(as.numeric(unlist(h3_locs[[i]])), 1389, latent_dim)
   post_prob_child[,i] <- hpHawkes::probability_se(locations = X,
@@ -96,9 +101,11 @@ df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 # get posterior samples means
 pst <- t(as.matrix(parameters[,20:25]))
+pst[1,] <- pst[1,] + pst[2,] # back transform
+pst[4,] <- pst[3,] + pst[4,] # back transform
 
 # get probability child
-post_prob_child <- matrix(0,length(times),S)
+post_prob_child <- matrix(100,length(times),S)
 for (i in 1:S) {
   X <- matrix(as.numeric(unlist(vic_locs[[i]])), 1393, latent_dim)
   post_prob_child[,i] <- hpHawkes::probability_se(locations = X,
@@ -113,11 +120,11 @@ df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 # get posterior samples means
 pst <- t(as.matrix(parameters[,14:19]))
-
-
+pst[1,] <- pst[1,] + pst[2,] # back transform
+pst[4,] <- pst[3,] + pst[4,] # back transform
 
 # get probability child
-post_prob_child <- matrix(0,length(times),S)
+post_prob_child <- matrix(100,length(times),S)
 for (i in 1:S) {
   X <- matrix(as.numeric(unlist(yam_locs[[i]])), 1240, latent_dim)
   post_prob_child[,i] <- hpHawkes::probability_se(locations = X,

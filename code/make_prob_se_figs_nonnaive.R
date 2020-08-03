@@ -15,14 +15,14 @@ gg_color_hue <- function(n) {
 }
 
 df <- readr::read_csv("data/coordinates_and_times.txt")
-h1n1 <- readRDS(file = "data/mcmc_samples/h1n1_probs_se.rds")
-h3n2 <- readRDS(file = "data/mcmc_samples/h3n2_probs_se.rds")
-yam <- readRDS(file = "data/mcmc_samples/yam_probs_se.rds")
-vic <- readRDS(file = "data/mcmc_samples/vic_probs_se.rds")
-# h1n1[h1n1=="NaN"] <- NA
-# h3n2[h3n2=="NaN"] <- NA
-# yam[yam=="NaN"] <- NA
-# vic[vic=="NaN"] <- NA
+h1n1 <- readRDS(file = "output/post_processed/h1n1_probs_se.rds")
+h3n2 <- readRDS(file = "output/post_processed/h3n2_probs_se.rds")
+yam <- readRDS(file = "output/post_processed/yam_probs_se.rds")
+vic <- readRDS(file = "output/post_processed/vic_probs_se.rds")
+h1n1[h1n1==100] <- NA
+h3n2[h3n2==100] <- NA
+yam[yam==100] <- NA
+vic[vic==100] <- NA
 
 
 Probs <- c( rowMeans(h1n1,na.rm = TRUE),
