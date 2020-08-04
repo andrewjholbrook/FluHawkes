@@ -72,7 +72,7 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "data/mcmc_samples/h1n1_probs_se.rds")
+saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/h1n1_probs_se.rds")
 
 
 
@@ -94,7 +94,7 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "data/mcmc_samples/h3n2_probs_se.rds")
+saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/h3n2_probs_se.rds")
 
 df2 <- df[df$strain=="vic",]
 df2 <- df2[order(df2$date),]
@@ -113,7 +113,7 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "data/mcmc_samples/vic_probs_se.rds")
+saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/vic_probs_se.rds")
 
 df2 <- df[df$strain=="yam",]
 df2 <- df2[order(df2$date),]
@@ -132,6 +132,6 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "data/mcmc_samples/yam_probs_se.rds")
+saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/yam_probs_se.rds")
 
 

@@ -23,6 +23,10 @@ h1n1[h1n1==100] <- NA
 h3n2[h3n2==100] <- NA
 yam[yam==100] <- NA
 vic[vic==100] <- NA
+# h1n1[is.nan(h1n1)] <- NA
+# h3n2[is.nan(h3n2)] <- NA
+# yam[is.nan(yam)] <- NA
+# vic[is.nan(vic)] <- NA
 
 
 Probs <- c( rowMeans(h1n1,na.rm = TRUE),
