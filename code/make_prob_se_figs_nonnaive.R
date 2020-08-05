@@ -37,14 +37,17 @@ Probs <- c( rowMeans(h1n1,na.rm = TRUE),
 df$Probs <- Probs
 df <- df[,c(5,6,10)]
 colnames(df) <- c("long", "lat", "Posterior\nmean\nprobability")
+df <- df[order(df$`Posterior
+mean
+probability`,decreasing = TRUE),]
 
 
 world <- map_data('world') %>% filter(region != "Antarctica") %>% fortify
 gg    <- ggplot(data=world,aes(x=long,y=lat,group=group)) +
   geom_polygon(fill="white",color="black",size=0.2) + theme_void() +
-  geom_jitter(data = df, aes(x=long,y=lat,color=`Posterior\nmean\nprobability`,alpha=`Posterior\nmean\nprobability`),inherit.aes = FALSE,width=3,height = 3,size=0.5) +
+  geom_jitter(data = df, aes(x=long,y=lat,color=`Posterior\nmean\nprobability`),inherit.aes = FALSE,width=3,height = 3,size=0.5) +
   scale_colour_distiller(palette="Spectral") +
-  scale_alpha_continuous(range = c(1,0.6),guide=FALSE) +
+  #scale_alpha_continuous(range = c(1,0.8),guide=FALSE) +
   #labs(x=NULL,y=NULL) +
   #   ggtitle("Event specific probabilities self-excitatory: BMDS-Hawkes") +
   annotate(geom="label", x=-70,y=75,color="black",label="Event specific probabilities self-excitatory: BMDS-Hawkes") +
