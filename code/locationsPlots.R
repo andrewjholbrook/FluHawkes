@@ -93,7 +93,7 @@ Probs <- c( rowMeans(h1n1,na.rm = TRUE),
 `Posterior\nmean\nprobability` <- Probs
 
 # prepare final data
-df <- data.frame(X1=dat[,1],X2=dat[,2],X3=`Posterior\nmean\nprobability`)
+df <- data.frame(X1=dat[,1],X2=dat[,2],`Posterior\nmean\nprobability`=`Posterior\nmean\nprobability`)
 df <- df[order(Probs,decreasing = TRUE),]
 
 gg <- ggplot(df, aes(x=X1,y=X2,color=`Posterior\nmean\nprobability`)) +
