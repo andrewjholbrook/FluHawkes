@@ -3,8 +3,8 @@ setwd('~/FluHawkes')
 set.seed(666)
 
 library(readr)
-library(reshape2)
-library(plyr)
+#library(reshape2)
+#library(plyr)
 library(MassiveMDS)
 
 # # remove diagonals
