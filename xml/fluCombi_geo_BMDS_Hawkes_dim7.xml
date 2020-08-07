@@ -65205,7 +65205,7 @@
 
 
 
-	<mcmc id="mcmc" chainLength="2000000" fullEvaluation="0" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
+	<mcmc id="mcmc" chainLength="100000" fullEvaluation="0" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
 		<posterior id="posterior">
 			<prior id="prior">
 				<gammaPrior shape="0.001" scale="1000" offset="0.0">
@@ -65318,30 +65318,30 @@
 			</column>
 		</log>
 
-		<log id="fileLog" logEvery="100000" fileName="output/fluCombi_geo_BMDS_Hawkes_Country.log" overwrite="true">
+		<log id="fileLog" logEvery="5000" fileName="output/fluCombi_geo_BMDS_Hawkes_Country.log" overwrite="true">
 			<posterior idref="posterior"/>
 			<prior idref="prior"/>
 			<likelihood idref="likelihood"/>
 			<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 		</log>
 
-		<log id="locationsLog.h1" logEvery="100000" fileName="output/h1_locations_7.log">
+		<log id="locationsLog.h1" logEvery="5000" fileName="output/h1_locations_7.log">
 			<parameter idref="locations.h1"/>
 		</log>
-		<log id="locationsLog.h3" logEvery="100000" fileName="output/h3_locations_7.log">
+		<log id="locationsLog.h3" logEvery="5000" fileName="output/h3_locations_7.log">
 			<parameter idref="locations.h3"/>
 		</log>
-		<log id="locationsLog.vic" logEvery="100000" fileName="output/vic_locations_7.log">
+		<log id="locationsLog.vic" logEvery="5000" fileName="output/vic_locations_7.log">
 			<parameter idref="locations.vic"/>
 		</log>
-		<log id="locationsLog.yam" logEvery="100000" fileName="output/yam_locations_7.log">
+		<log id="locationsLog.yam" logEvery="5000" fileName="output/yam_locations_7.log">
 			<parameter idref="locations.yam"/>
 		</log>
 
-		<log id="locationsLog.countries" logEvery="100000" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
+		<log id="locationsLog.countries" logEvery="5000" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
 			<parameter idref="countries"/>
 		</log>
-		<log id="parametersLog" logEvery="100000" fileName="output/parameters7.log">
+		<log id="parametersLog" logEvery="5000" fileName="output/parameters7.log">
 			<parameter idref="mds.residual.precision"/>
 			<parameter idref="sigmaXprec.h1"/>
 			<parameter idref="tauXprec.h1"/>
