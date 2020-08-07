@@ -141,13 +141,13 @@ remove(dat4)
 # take second half of samples
 #logLiks <- logLiks[-(1:ceiling(length(logLiks)/2))]
 
-precs <- read_delim(sprintf("output/precision%s.log",
+precs <- read_delim(sprintf("output/parameters%s.log",
                             paste(d,k,sep="")),
                     "\t",
                     escape_double = FALSE,
                     trim_ws = TRUE,
                     skip = 3)
-precs <- unlist(precs[-1,-1])
+precs <- unlist(precs[-1,2])
 
 heldOut[is.na(heldOut)] <- NaN
 truncation <- TRUE
