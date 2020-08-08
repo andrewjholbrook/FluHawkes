@@ -172,5 +172,5 @@ for(i in ceiling(length(logLiks)/2):length(logLiks)){
 }
 
 
-cat(d, ' ', k, ' ', mean(logLiks),'\n',
+cat(d, ' ', k, ' ', mean(logLiks[logLiks!=0]),'\n',
     file="output/kFoldResult.txt",append=TRUE)
