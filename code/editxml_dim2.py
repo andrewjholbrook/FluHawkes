@@ -6,7 +6,7 @@ def main(args):
 	with open(args.input,'r') as infile:
 		with open(args.output, 'w') as outfile:
 			for s in infile:
-				outfile.write(s.replace("data/trainFold", "data/trainFold" + args.k + ".txt").replace("locations_2.log", "locations_2" +  args.k + ".log").replace("precision2","precision2"+args.k))
+				outfile.write(s.replace("data/trainFold", "data/trainFold" + args.k + ".txt").replace("locations_2.log", "locations_2" +  args.k + ".log").replace("parameters2","parameters2"+args.k))
 
 
 if __name__ == '__main__':
