@@ -64841,7 +64841,7 @@
 
 	
 
-	<multidimensionalScalingLikelihood id="mdsLikelihood" fileName="data/trainFold" mdsDimension="2">
+	<multidimensionalScalingLikelihood id="mdsLikelihood" fileName="data/fluCombi_Deff_reordered_noyrs.txt" mdsDimension="2">
 		<locations>
 			<fastCompoundMatrixParameter id="allLocations">
 				<parameter idref="locations.h1"/>
