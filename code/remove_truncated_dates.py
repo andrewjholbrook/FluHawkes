@@ -31,6 +31,14 @@ def main():
                         outfile.write(s.replace("<taxon idref=","<!-- <taxon idref=").replace(">","> -->"))
                     else:
                         outfile.write(s)
+                elif(re.match('(.*)=\"dateDecimal\">(.*)', s)):
+                    result = re.search('=\"dateDecimal\">(.*)<', s)
+                    result = str(result.group(1));
+                    if '.' not in result:
+                        result2 = result[:4] + '.' + result[4:]
+                        outfile.write(s.replace(result,result2))
+                    else:
+                        outfile.write(s)
                 else:
                     outfile.write(s)
 

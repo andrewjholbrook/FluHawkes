@@ -3,7 +3,7 @@
 import argparse, os, re
 
 def main():
-	with open("FluHawkes/xml/fluCombi_geo_BMDS_Hawkes_dim2.xml",'r') as infile:
+	with open("FluHawkes/xml/fluCombi_geo_BMDS_Hawkes_Exper.xml",'r') as infile:
 		with open("FluHawkes/data/locations_times.txt", 'w') as outfile:
 			for s in infile:
 				if re.match("(.*)<taxon id=(.*)", s):
