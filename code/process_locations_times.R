@@ -23,12 +23,13 @@ locations_times <- locations_times[locations_times$X2 %% 1 !=0,]
 write.table(locations_times,file = "data/locations_times.txt",quote=FALSE,row.names = FALSE,col.names = FALSE)
 
 # remove items from deffs
+#read.csv("data/xml_names_to_remove.csv")
 flu.combi <- read.csv("data/newDeffs.txt", header=FALSE, skip=1, sep="\t")
 rownames(flu.combi) <- flu.combi[, 1]
 flu.combi <- flu.combi[, -1]
 colnames(flu.combi) <- rownames(flu.combi)
 
-keepers <- ! colnames(flu.combi)[1:5392] %in% names_to_remove
+keepers <- ! colnames(flu.combi) %in% names_to_remove
 flu.combi <- flu.combi[keepers,keepers]
 
 write.table(flu.combi, "data/fluCombi_Deff_reordered_noyrs.txt", sep = "\t",quote = FALSE)

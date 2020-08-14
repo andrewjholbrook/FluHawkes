@@ -65074,7 +65074,7 @@
 
 	<operators id="operators" optimizationSchedule="log">
 
- 		<hamiltonianMonteCarloOperator weight="20" nSteps="10" autoOptimize="true" stepSize="0.01" drawVariance="1.0">
+ 		<hamiltonianMonteCarloOperator weight="1" nSteps="10" autoOptimize="true" stepSize="0.01" drawVariance="1.0">
  		 	<jointGradient id="jointGradient">
  				<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 	 			<compoundGradient id="latentGradient">
@@ -65205,7 +65205,7 @@
 
 
 
-	<mcmc id="mcmc" chainLength="100000" fullEvaluation="0" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
+	<mcmc id="mcmc" chainLength="10000000" fullEvaluation="0" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
 		<posterior id="posterior">
 			<prior id="prior">
 				<gammaPrior shape="0.001" scale="1000" offset="0.0">
