@@ -64724,7 +64724,7 @@
     		<taxa idref="taxa.h1"/>
     	</times>    
         <locations>
-			<fastMatrixParameter id="locations.h1" rows="2" columns="1370" test="true" signalComponents="false"/>
+			<fastMatrixParameter id="locations.h1" rows="2" columns="1161" test="true" signalComponents="false"/>
         </locations>
 		<jitter window="0.05 0.05" duplicatesOnly="false">
 			<parameter idref="locations.h1"/>
@@ -64754,7 +64754,7 @@
     		<taxa idref="taxa.h3"/>
     	</times>    
         <locations>
-			<fastMatrixParameter id="locations.h3" rows="2" columns="1389" test="true" signalComponents="false"/>
+			<fastMatrixParameter id="locations.h3" rows="2" columns="1341" test="true" signalComponents="false"/>
         </locations>
 		<jitter window="0.05 0.05" duplicatesOnly="false">
 			<parameter idref="locations.h3"/>
@@ -64784,7 +64784,7 @@
     		<taxa idref="taxa.vic"/>
     	</times>    
         <locations>
-			<fastMatrixParameter id="locations.vic" rows="2" columns="1393" test="true" signalComponents="false"/>
+			<fastMatrixParameter id="locations.vic" rows="2" columns="1195" test="true" signalComponents="false"/>
         </locations>
 		<jitter window="0.05 0.05" duplicatesOnly="false">
 			<parameter idref="locations.vic"/>
@@ -64814,7 +64814,7 @@
     		<taxa idref="taxa.yam"/>
         </times>
         <locations>
-			<fastMatrixParameter id="locations.yam" rows="2" columns="1240" test="true" signalComponents="false"/>
+			<fastMatrixParameter id="locations.yam" rows="2" columns="1036" test="true" signalComponents="false"/>
         </locations>
 		<jitter window="0.05 0.05" duplicatesOnly="false">
 			<parameter idref="locations.yam"/>
