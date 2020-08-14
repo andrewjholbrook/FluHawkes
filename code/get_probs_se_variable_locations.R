@@ -8,15 +8,15 @@ library(reshape2)
 latent_dim <- 2
 
 # get coordinates and times
-h1_locations <- read_table2("output/h1_locations.log", 
+h1_locations <- read_table2("output/h1_locations_2.log", 
                             skip = 3)
-h3_locations <- read_table2("output/h3_locations.log", 
+h3_locations <- read_table2("output/h3_locations_2.log", 
                             skip = 3)
-vic_locations <- read_table2("output/vic_locations.log", 
+vic_locations <- read_table2("output/vic_locations_2.log", 
                              skip = 3)
-yam_locations <- read_table2("output/yam_locations.log", 
+yam_locations <- read_table2("output/yam_locations_2.log", 
                              skip = 3)
-parameters <- read_delim("output/parameters.log", 
+parameters <- read_delim("output/parameters2.log", 
                          "\t", escape_double = FALSE, trim_ws = TRUE, 
                          skip = 3)
 
@@ -27,12 +27,12 @@ df$strain <- c( rep("h1n1",1370),
                 rep("yam",1240) )
 
 # remove burnin and remove state counts
-S             <- dim(h1_locations)[1]
-h1_locations  <- h1_locations[ceiling(S*.1):S,-1]
-h3_locations  <- h3_locations[ceiling(S*.1):S,-1]
-yam_locations <- yam_locations[ceiling(S*.1):S,-1]
-vic_locations <- vic_locations[ceiling(S*.1):S,-1]
-parameters    <- parameters[ceiling(S*.1):S,-1]
+S             <- 1781#dim(h1_locations)[1]
+h1_locations  <- h1_locations[ceiling(S*.5):S,-1]
+h3_locations  <- h3_locations[ceiling(S*.5):S,-1]
+yam_locations <- yam_locations[ceiling(S*.5):S,-1]
+vic_locations <- vic_locations[ceiling(S*.5):S,-1]
+parameters    <- parameters[ceiling(S*.5):S,-1]
 
 # get list of locations matrices
 S <- dim(h1_locations)[1]

@@ -6,25 +6,25 @@ library(coda)
 library(ggplot2)
 library(ggforce)
 
-h1_locations <- read_table2("output/h1_locations.log", 
+h1_locations <- read_table2("output/h1_locations_2.log", 
                                    skip = 3)
-h3_locations <- read_table2("output/h3_locations.log", 
+h3_locations <- read_table2("output/h3_locations_2.log", 
                               skip = 3)
-vic_locations <- read_table2("output/vic_locations.log", 
+vic_locations <- read_table2("output/vic_locations_2.log", 
                               skip = 3)
-yam_locations <- read_table2("output/yam_locations.log", 
+yam_locations <- read_table2("output/yam_locations_2.log", 
                                skip = 3)
 countries <- read_table2("output/countries_small_geo_BMDS_Hawkes_Country.locations.log", 
                          skip = 3)
 
 # remove burnin
-S <- dim(h1_locations)[1]
+S <- min(dim(h1_locations)[1],dim(h3_locations)[1] ,dim(yam_locations)[1],dim(vic_locations)[1]  ,dim(countries)[1] )
 h1_locations <- h1_locations[ceiling(S*.1):S,]
 h3_locations <- h3_locations[ceiling(S*.1):S,]
 yam_locations <- yam_locations[ceiling(S*.1):S,]
 vic_locations <- vic_locations[ceiling(S*.1):S,]
-c <- dim(countries)[1]
-countries <- countries[ceiling(c*.1):c,]
+#c <- dim(countries)[1]
+countries <- countries[ceiling(S*.1):S,]
 
 # take first row 
 h1_locations <- h1_locations[2,-1]
