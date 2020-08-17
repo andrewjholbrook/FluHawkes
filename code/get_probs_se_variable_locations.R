@@ -20,7 +20,6 @@ parameters <- read_delim("output/parameters2.log",
                          "\t", escape_double = FALSE, trim_ws = TRUE, 
                          skip = 3)
 
-stop("need to update")
 df <- readr::read_csv("data/coordinates_and_times.txt") # need to update for reduced sample
 # df$strain <- c( rep("h1n1",1370),
 #                 rep("h3n2",1389),
@@ -63,7 +62,7 @@ for(i in 1:S) {
 }
 
 df2 <- df[df$strain=="h1n1",]
-df2 <- df2[order(df2$date),]
+#df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 pst <- t(as.matrix(parameters[,2:7]))
 pst[1,] <- pst[1,] + pst[2,] # back transform
@@ -78,13 +77,14 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/h1n1_probs_se.rds")
+#saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/h1n1_probs_se.rds")
+saveRDS(post_prob_child,file = "output/post_processed/h1n1_probs_se.rds")
 
 
 
 
 df2 <- df[df$strain=="h3n2",]
-df2 <- df2[order(df2$date),]
+#df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 # get posterior samples means
 pst <- t(as.matrix(parameters[,8:13]))
@@ -100,10 +100,10 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/h3n2_probs_se.rds")
+saveRDS(post_prob_child,file = "output/post_processed/h3n2_probs_se.rds")
 
 df2 <- df[df$strain=="vic",]
-df2 <- df2[order(df2$date),]
+#df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 # get posterior samples means
 pst <- t(as.matrix(parameters[,20:25]))
@@ -119,10 +119,10 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/vic_probs_se.rds")
+saveRDS(post_prob_child,file = "output/post_processed/vic_probs_se.rds")
 
 df2 <- df[df$strain=="yam",]
-df2 <- df2[order(df2$date),]
+#df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
 # get posterior samples means
 pst <- t(as.matrix(parameters[,14:19]))
@@ -138,6 +138,6 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/yam_probs_se.rds")
+saveRDS(post_prob_child,file = "output/post_processed/yam_probs_se.rds")
 
 
