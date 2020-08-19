@@ -6,19 +6,19 @@ library(hpHawkes)
 ##################################################################################
 df <- readr::read_csv("data/coordinates_and_times.txt")
 
-df <- df[1:1370,] # h1n1
+df <- df[1:1161,] # h1n1
 #df <- df[1371:(1370+1389),] # h3n2
 #df <- df[(1370+1389+1):(1370+1389+1393),] # vic
 #df <- df[(1370+1389+1393+1):dim(df)[1],] # yam
 
-df <- df[order(df$date),]
+#df <- df[order(df$date),]
 
 X <- as.matrix(df[,7:9])
 times <- df$date
 times <- times - min(times)
 
 
-Max <- 500000
+Max <- 100000
 burn <- 50000
 set.seed(666)
 
@@ -112,18 +112,18 @@ saveRDS(samps,file = "output/mcmc_samples_naive/naive_h1n1.rds")
 df <- readr::read_csv("data/coordinates_and_times.txt")
 
 #df <- df[1:1370,] # h1n1
-df <- df[1371:(1370+1389),] # h3n2
+df <- df[(1161+1):(1161+1341),] # h3n2
 #df <- df[(1370+1389+1):(1370+1389+1393),] # vic
 #df <- df[(1370+1389+1393+1):dim(df)[1],] # yam
 
-df <- df[order(df$date),]
+#df <- df[order(df$date),]
 
 X <- as.matrix(df[,7:9])
 times <- df$date
 times <- times - min(times)
 
 
-Max <- 500000
+Max <- 100000
 burn <- 50000
 set.seed(666)
 
@@ -218,17 +218,17 @@ df <- readr::read_csv("data/coordinates_and_times.txt")
 
 #df <- df[1:1370,] # h1n1
 #df <- df[1371:(1370+1389),] # h3n2
-df <- df[(1370+1389+1):(1370+1389+1393),] # vic
+df <- df[(1161+1341+1):(1161+1341+1195),] # vic
 #df <- df[(1370+1389+1393+1):dim(df)[1],] # yam
 
-df <- df[order(df$date),]
+#df <- df[order(df$date),]
 
 X <- as.matrix(df[,7:9])
 times <- df$date
 times <- times - min(times)
 
 
-Max <- 500000
+Max <- 100000
 burn <- 50000
 set.seed(666)
 
@@ -325,16 +325,16 @@ df <- readr::read_csv("data/coordinates_and_times.txt")
 #df <- df[1:1370,] # h1n1
 #df <- df[1371:(1370+1389),] # h3n2
 #df <- df[(1370+1389+1):(1370+1389+1393),] # vic
-df <- df[(1370+1389+1393+1):dim(df)[1],] # yam
+df <- df[(1161+1341+1195+1):(1161+1341+1195+1036),] # yam
 
-df <- df[order(df$date),]
+#df <- df[order(df$date),]
 
 X <- as.matrix(df[,7:9])
 times <- df$date
 times <- times - min(times)
 
 
-Max <- 500000
+Max <- 100000
 burn <- 50000
 set.seed(666)
 
