@@ -10,7 +10,7 @@ OAGa_Nodes <- read_delim("data/OAGa_Nodes.txt",
                               trim_ws = TRUE)
 
 Countries <- str_extract(OAGa_Nodes$X3, "\\b[A-Z][A-Z]\\b")
-
+counts <- table(Countries)
 
 OAGa_Weight <- read_table2("data/OAGa_Weight.txt", 
                                col_names = FALSE)
@@ -41,7 +41,16 @@ for(i in uniq_countries) {
 }
 OAGa_Weight <- OAGa_Weight[rowSums(OAGa_Weight)>0,]
 OAGa_Weight <- OAGa_Weight[,colSums(OAGa_Weight)>0]
-
+colnames(OAGa_Weight) <- uniq_countries
+row.names(OAGa_Weight) <- uniq_countries
+for(i in 1:225){
+  eff_airport <- sqrt(counts[names(counts)==uniq_countries[i]])
+  if(eff_airport==1){
+    OAGa_Weight[i,i] <- 0
+  } else {
+    OAGa_Weight[i,i] <- OAGa_Weight[i,i] / eff_airport / 2
+  }
+}
 
 tots <- diag(1/(sqrt(colSums(OAGa_Weight))))
 P <- tots %*% OAGa_Weight %*% tots# need probability matrix
@@ -60,7 +69,7 @@ Deffs[Deffs==0] <- sp[Deffs==0]
 #
 ### create larger file
 #
-flu.combi <- read.csv("data/fluCombi_Deff_reordered.txt", header=TRUE, skip=0, sep="\t")
+flu.combi <- read.csv("data/rerereorderedDeffs.txt", header=TRUE, skip=0, sep="\t")
 locations_times <- read_table2("data/locations_times.txt", 
                                     col_names = FALSE)
 locations_times$X3 <- str_replace(locations_times$X3,"([a-z])([A-Z])","\\1 \\2")
@@ -71,7 +80,7 @@ locations_times$codes <- countrycode(locations_times$X3,origin = "country.name",
 #                                      ".([a-z]+)","\\1")
 # locations_times$codes <- toupper(locations_times$codes)
 
-sum(uniq_countries %in% locations_times$codes) # 66 as should be
+sum(uniq_countries %in% locations_times$codes) # 64 as should be
 
 
 # flu.combi <- flu.combi[,-1]
@@ -97,13 +106,13 @@ remove(Countries)
 
 for(i in 1:N){
   for(j in (i+1):N){
-    if(i <= 5392 & j <= 5392){
+    if(i <= 4733 & j <= 4733){
       data[i,j] <- Deffs[paste0(locations_times$codes[locations_times$X1==names[i]]),
                               paste0(locations_times$codes[locations_times$X1==names[j]])] 
     # } else if(i>5392 & j<=5392) {
     #   data[i,j] <- Deffs[paste0(names[i]),
     #                           paste0(locations_times$codes[locations_times$X1==names[j]])]
-    } else if(i<=5392 & j>5392) {
+    } else if(i<=4733 & j>4733) {
       data[i,j] <- Deffs[paste0(locations_times$codes[locations_times$X1==names[i]]),
                               paste0(names[j])]
     } else {
@@ -118,7 +127,7 @@ for(i in 1:N){
 colnames(data) <- names
 row.names(data) <- names
   
-write.table(data, "data/newDeffs.txt", sep = "\t",quote = FALSE)
+write.table(data, "data/newestDeffs.txt", sep = "\t",quote = FALSE)
 
   
   

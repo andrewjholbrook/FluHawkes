@@ -42,7 +42,8 @@ dat4 <- vic_locations
 
 # get names
 #locs <- unlist(read.csv(file="~/FluMDS/locationNamesCombined.txt", header = FALSE))
-locs <- scan("data/names.txt", what = character(), sep = "\t")
+#locs <- scan("data/names.txt", what = character(), sep = "\t")
+locs <- scan("data/Exper_names.txt", what = character(), sep = "\t")
 
 #locs <- gsub('.{1}$', '',x=locs)
 locs2 <- gsub('.{1}$', '',x=colnames(countries)[-1])
@@ -107,7 +108,7 @@ gg <- ggplot(df, aes(x=X1,y=X2,color=`Posterior\nmean\nprobability`)) +
             check_overlap = TRUE,
             fontface="bold") +
   ylab("Latent dimension 2") + xlab("Latent dimension 1") +
-  ggtitle("Worldwide latent air traffic network")+
+  ggtitle("Worldwide passenger air traffic network")+
   theme_classic()
 gg
 

@@ -20,7 +20,7 @@ parameters <- read_delim("output/parameters2.log",
                          "\t", escape_double = FALSE, trim_ws = TRUE, 
                          skip = 3)
 
-df <- readr::read_csv("data/coordinates_and_times.txt") # need to update for reduced sample
+df <- readr::read_csv("data/coordinates_and_times.txt") 
 # df$strain <- c( rep("h1n1",1370),
 #                 rep("h3n2",1389),
 #                 rep("vic",1393),
@@ -33,11 +33,11 @@ df$strain <- c( rep("h1n1",1161),
 
 # remove burnin and remove state counts
 S             <- dim(h1_locations)[1]
-h1_locations  <- h1_locations[ceiling(S*.1):S,-1]
-h3_locations  <- h3_locations[ceiling(S*.1):S,-1]
-yam_locations <- yam_locations[ceiling(S*.1):S,-1]
-vic_locations <- vic_locations[ceiling(S*.1):S,-1]
-parameters    <- parameters[ceiling(S*.1):S,-1]
+h1_locations  <- h1_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
+h3_locations  <- h3_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
+yam_locations <- yam_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
+vic_locations <- vic_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
+parameters    <- parameters[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
 
 # get list of locations matrices
 S <- dim(h1_locations)[1]
@@ -82,7 +82,6 @@ saveRDS(post_prob_child,file = "output/post_processed/h1n1_probs_se.rds")
 
 
 
-
 df2 <- df[df$strain=="h3n2",]
 #df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
@@ -102,6 +101,7 @@ for (i in 1:S) {
 }
 saveRDS(post_prob_child,file = "output/post_processed/h3n2_probs_se.rds")
 
+
 df2 <- df[df$strain=="vic",]
 #df2 <- df2[order(df2$date),]
 times <- df2$date - min(df2$date)
@@ -120,6 +120,7 @@ for (i in 1:S) {
                                                   gpu = 2,dimension=latent_dim)
 }
 saveRDS(post_prob_child,file = "output/post_processed/vic_probs_se.rds")
+
 
 df2 <- df[df$strain=="yam",]
 #df2 <- df2[order(df2$date),]

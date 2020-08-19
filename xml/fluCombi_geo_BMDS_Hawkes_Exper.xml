@@ -64730,22 +64730,22 @@
 			<parameter idref="locations.h1"/>
 		</jitter>
         <sigmaXprec>
-            <parameter id="sigmaXprec.h1" value="1.46836017" lower="0.0"/>
+            <parameter id="sigmaXprec.h1" value="70.0" lower="0.0"/>
         </sigmaXprec>
         <tauXprec>
-            <parameter id="tauXprec.h1" value="0.26153185" lower="0.0"/>
+            <parameter id="tauXprec.h1" value="11.0" lower="0.0"/>
         </tauXprec>
         <tauTprec>
-            <parameter id="tauTprec.h1" value="0.21233766" lower="0.0"/>
+            <parameter id="tauTprec.h1" value="0.70" lower="0.0"/>
         </tauTprec>
         <omega>
-            <parameter id="omega.h1" value="0.02438852" lower="0.0"/>
+            <parameter id="omega.h1" value="18.0" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.h1" value="1" lower="0.0"/>
+            <parameter id="theta.h1" value="0.80" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.h1" value="1" lower="0.0"/>
+            <parameter id="mu0.h1" value="0.20" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -64760,22 +64760,22 @@
 			<parameter idref="locations.h3"/>
 		</jitter>
         <sigmaXprec>
-            <parameter id="sigmaXprec.h3" value="1.46836017" lower="0.0"/>
+            <parameter id="sigmaXprec.h3" value="100.0" lower="0.0"/>
         </sigmaXprec>
         <tauXprec>
-            <parameter id="tauXprec.h3" value="0.26153185" lower="0.0"/>
+            <parameter id="tauXprec.h3" value="10.0" lower="0.0"/>
         </tauXprec>
         <tauTprec>
-            <parameter id="tauTprec.h3" value="0.21233766" lower="0.0"/>
+            <parameter id="tauTprec.h3" value="0.01" lower="0.0"/>
         </tauTprec>
         <omega>
-            <parameter id="omega.h3" value="0.02438852" lower="0.0"/>
+            <parameter id="omega.h3" value="2.0" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.h3" value="1" lower="0.0"/>
+            <parameter id="theta.h3" value="0.9" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.h3" value="1" lower="0.0"/>
+            <parameter id="mu0.h3" value="0.6" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -64790,22 +64790,22 @@
 			<parameter idref="locations.vic"/>
 		</jitter>
         <sigmaXprec>
-            <parameter id="sigmaXprec.vic" value="1.46836017" lower="0.0"/>
+            <parameter id="sigmaXprec.vic" value="0.2" lower="0.0"/>
         </sigmaXprec>
         <tauXprec>
-            <parameter id="tauXprec.vic" value="0.26153185" lower="0.0"/>
+            <parameter id="tauXprec.vic" value="1000.0" lower="0.0"/>
         </tauXprec>
         <tauTprec>
-            <parameter id="tauTprec.vic" value="0.21233766" lower="0.0"/>
+            <parameter id="tauTprec.vic" value="1.5" lower="0.0"/>
         </tauTprec>
         <omega>
-            <parameter id="omega.vic" value="0.02438852" lower="0.0"/>
+            <parameter id="omega.vic" value="20.0" lower="0.0"/>
         </omega>
         <theta>
-            <parameter id="theta.vic" value="1" lower="0.0"/>
+            <parameter id="theta.vic" value="0.3" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.vic" value="1" lower="0.0"/>
+            <parameter id="mu0.vic" value="0.7" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -64820,22 +64820,22 @@
 			<parameter idref="locations.yam"/>
 		</jitter>
         <sigmaXprec>
-            <parameter id="sigmaXprec.yam" value="1.46836017" lower="0.0"/>
+            <parameter id="sigmaXprec.yam" value="80.0" lower="0.0"/>
         </sigmaXprec>
         <tauXprec>
-            <parameter id="tauXprec.yam" value="0.26153185" lower="0.0"/>
+            <parameter id="tauXprec.yam" value="2.0" lower="0.0"/>
         </tauXprec>
         <tauTprec>
-            <parameter id="tauTprec.yam" value="0.21233766" lower="0.0"/>
+            <parameter id="tauTprec.yam" value="0.05" lower="0.0"/>
         </tauTprec>
         <omega>
-            <parameter id="omega.yam" value="0.02438852" lower="0.0"/>
+            <parameter id="omega.yam" value="2.0" lower="0.0"/>
         </omega>
         <theta>
             <parameter id="theta.yam" value="1" lower="0.0"/>
         </theta>
         <mu0>
-            <parameter id="mu0.yam" value="1" lower="0.0"/>
+            <parameter id="mu0.yam" value="0.6" lower="0.0"/>
         </mu0>
     </hawkesLikelihood>
 
@@ -65205,7 +65205,7 @@
 
 
 
-	<mcmc id="mcmc" chainLength="10000000" fullEvaluation="0" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
+	<mcmc id="mcmc" chainLength="20000000" fullEvaluation="0" autoOptimize="true" operatorAnalysis="output/fluCombi_geo_BMDS_Hawkes_Dim2.ops">
 		<posterior id="posterior">
 			<prior id="prior">
 				<gammaPrior shape="0.001" scale="1000" offset="0.0">
@@ -65318,30 +65318,30 @@
 			</column>
 		</log>
 
-		<log id="fileLog" logEvery="5000" fileName="output/fluCombi_geo_BMDS_Hawkes_Country.log" overwrite="true">
+		<log id="fileLog" logEvery="10000" fileName="output/fluCombi_geo_BMDS_Hawkes_Country.log" overwrite="true">
 			<posterior idref="posterior"/>
 			<prior idref="prior"/>
 			<likelihood idref="likelihood"/>
 			<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 		</log>
 
-		<log id="locationsLog.h1" logEvery="5000" fileName="output/h1_locations_2.log">
+		<log id="locationsLog.h1" logEvery="10000" fileName="output/h1_locations_2.log">
 			<parameter idref="locations.h1"/>
 		</log>
-		<log id="locationsLog.h3" logEvery="5000" fileName="output/h3_locations_2.log">
+		<log id="locationsLog.h3" logEvery="10000" fileName="output/h3_locations_2.log">
 			<parameter idref="locations.h3"/>
 		</log>
-		<log id="locationsLog.vic" logEvery="5000" fileName="output/vic_locations_2.log">
+		<log id="locationsLog.vic" logEvery="10000" fileName="output/vic_locations_2.log">
 			<parameter idref="locations.vic"/>
 		</log>
-		<log id="locationsLog.yam" logEvery="5000" fileName="output/yam_locations_2.log">
+		<log id="locationsLog.yam" logEvery="10000" fileName="output/yam_locations_2.log">
 			<parameter idref="locations.yam"/>
 		</log>
 
-		<log id="locationsLog.countries" logEvery="5000" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
+		<log id="locationsLog.countries" logEvery="10000" fileName="output/countries_small_geo_BMDS_Hawkes_Country.locations.log">
 			<parameter idref="countries"/>
 		</log>
-		<log id="parametersLog" logEvery="5000" fileName="output/parameters2.log">
+		<log id="parametersLog" logEvery="10000" fileName="output/parameters2.log">
 			<parameter idref="mds.residual.precision"/>
 			<parameter idref="sigmaXprec.h1"/>
 			<parameter idref="tauXprec.h1"/>

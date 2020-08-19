@@ -41,6 +41,12 @@ df <- df[order(df$`Posterior
 mean
 probability`,decreasing = TRUE),]
 
+# df$strain <- c( rep("h1n1",1161),
+#                 rep("h3n2",1341),
+#                 rep("vic",1195),
+#                 rep("yam",1036) )
+# 
+# df <- df[df$strain!="vic",]
 
 world <- map_data('world') %>% filter(region != "Antarctica") %>% fortify
 gg    <- ggplot(data=world,aes(x=long,y=lat,group=group)) +
