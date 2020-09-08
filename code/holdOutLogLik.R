@@ -51,7 +51,7 @@ k    <- argu[2]
 # locs <- factor(locs)
 
 # get heldout distances and compute log likes
-heldOut <- read_table2(sprintf('data/testFold%d.txt',k), col_names = TRUE)
+heldOut <- read_table2(sprintf('folds/testFold%d.txt',k), col_names = TRUE)
 #heldOut <- melt(heldOut,na.rm=TRUE) # turn to d+1 column df, remove NAs
 #heldOut <- removeDiag(heldOut)
 # remove rows that do not equal any in locs (output from beast)
