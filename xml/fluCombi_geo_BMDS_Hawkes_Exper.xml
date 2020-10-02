@@ -64793,7 +64793,7 @@
             <parameter id="sigmaXprec.vic" value="0.2" lower="0.0"/>
         </sigmaXprec>
         <tauXprec>
-            <parameter id="tauXprec.vic" value="1000.0" lower="0.0"/>
+            <parameter id="tauXprec.vic" value="20.0" lower="0.0"/>
         </tauXprec>
         <tauTprec>
             <parameter id="tauTprec.vic" value="1.5" lower="0.0"/>
@@ -65074,22 +65074,23 @@
 
 	<operators id="operators" optimizationSchedule="log">
 
- 		<hamiltonianMonteCarloOperator weight="1" nSteps="10" autoOptimize="true" stepSize="0.01" drawVariance="1.0">
+ 		<hamiltonianMonteCarloOperator weight="1000000000000000000000000" nSteps="10" autoOptimize="true" stepSize="0.01" drawVariance="1.0">
  		 	<jointGradient id="jointGradient">
  				<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
-	 			<compoundGradient id="latentGradient">
+ 					<!--				<multivariateNormalPrior idref="countriesPrior"/> -->
+	 		<!--	<compoundGradient id="latentGradient">
 					<hawkesLikelihood idref="hawkesLikelihood.h1"/>
 					<hawkesLikelihood idref="hawkesLikelihood.h3"/>
 					<hawkesLikelihood idref="hawkesLikelihood.vic"/>
-					<hawkesLikelihood idref="hawkesLikelihood.yam"/>
+					<hawkesLikelihood idref="hawkesLikelihood.yam"/> 
 					<multivariateNormalPrior idref="countriesPrior"/>
-				</compoundGradient>
+				</compoundGradient> -->
 			</jointGradient>
 			<compoundMatrixParameter idref="allLocations"/>
  		</hamiltonianMonteCarloOperator>
 
 
-		<scaleOperator scaleFactor="0.75" weight="1">
+		<scaleOperator scaleFactor="0.75" weight="1000000000000000000000000">
 			<parameter idref="mds.residual.precision"/>
 		</scaleOperator>
 		
@@ -65293,10 +65294,10 @@
 			</prior>
 
 			<likelihood id="likelihood">
-				<hawkesLikelihood idref="hawkesLikelihood.h1"/>
+		<!--		<hawkesLikelihood idref="hawkesLikelihood.h1"/>
 				<hawkesLikelihood idref="hawkesLikelihood.h3"/>
 				<hawkesLikelihood idref="hawkesLikelihood.yam"/>
-				<hawkesLikelihood idref="hawkesLikelihood.vic"/>
+				<hawkesLikelihood idref="hawkesLikelihood.vic"/> -->
 				<multidimensionalScalingLikelihood idref="mdsLikelihood"/>
 			</likelihood>
 		</posterior>

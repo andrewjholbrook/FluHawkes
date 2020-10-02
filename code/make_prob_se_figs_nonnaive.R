@@ -7,7 +7,7 @@ library(dplyr)
 library(grid)
 register_google(key = "AIzaSyDzICiKTM1TA0Ux4bcBXFiwd1_1OMbizcg")
 
-set.seed(2)
+set.seed(1)
 
 gg_color_hue <- function(n) {
   hues = seq(15, 375, length = n + 1)
@@ -15,10 +15,10 @@ gg_color_hue <- function(n) {
 }
 
 df <- readr::read_csv("data/coordinates_and_times.txt")
-h1n1 <- readRDS(file = "output/post_processed/h1n1_probs_se.rds")
-h3n2 <- readRDS(file = "output/post_processed/h3n2_probs_se.rds")
-yam <- readRDS(file = "output/post_processed/yam_probs_se.rds")
-vic <- readRDS(file = "output/post_processed/vic_probs_se.rds")
+h1n1 <- readRDS(file = "output/post_processed/h1n1_probs_se_6.rds")
+h3n2 <- readRDS(file = "output/post_processed/h3n2_probs_se_6.rds")
+yam <- readRDS(file = "output/post_processed/yam_probs_se_6.rds")
+vic <- readRDS(file = "output/post_processed/vic_probs_se_6.rds")
 h1n1[h1n1==100] <- NA
 h3n2[h3n2==100] <- NA
 yam[yam==100] <- NA
@@ -35,8 +35,8 @@ Probs <- c( rowMeans(h1n1,na.rm = TRUE),
             rowMeans(yam,na.rm = TRUE) )
 # Probs[Probs=="NaN"] <- 0
 df$Probs <- Probs
-df <- df[,c(5,6,10)]
-colnames(df) <- c("long", "lat", "Posterior\nmean\nprobability")
+df <- df[,c(2,5,6,10)]
+colnames(df) <- c("Year","long", "lat", "Posterior\nmean\nprobability")
 df <- df[order(df$`Posterior
 mean
 probability`,decreasing = TRUE),]
@@ -51,7 +51,7 @@ probability`,decreasing = TRUE),]
 world <- map_data('world') %>% filter(region != "Antarctica") %>% fortify
 gg    <- ggplot(data=world,aes(x=long,y=lat,group=group)) +
   geom_polygon(fill="white",color="black",size=0.2) + theme_void() +
-  geom_jitter(data = df, aes(x=long,y=lat,color=`Posterior\nmean\nprobability`),inherit.aes = FALSE,width=3,height = 3,size=0.5) +
+  geom_jitter(data = df, aes(x=long,y=lat,color=`Posterior\nmean\nprobability`),inherit.aes = FALSE,width=3,height = 3,size=0.5,alpha=0.8) +
   scale_colour_distiller(palette="Spectral") +
   #scale_alpha_continuous(range = c(1,0.8),guide=FALSE) +
   #labs(x=NULL,y=NULL) +
@@ -67,7 +67,7 @@ colors <- RColorBrewer::brewer.pal(9,"Spectral")[9:1]
 gg2 <- ggplot(data = df,aes(x=`Posterior\nmean\nprobability`)) +
   #geom_density(fill=df$`Posterior\nmean\nprobability`)+
   #scale_colour_distiller(palette="Spectral") +
-  geom_histogram(fill=colors,bins = 9)+ xlab("")+
+  geom_histogram(fill=colors,bins = 9,alpha=0.8)+ xlab("")+
   ylab("Counts") +
   theme_classic()
 gg2

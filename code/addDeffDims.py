@@ -3,12 +3,12 @@
 import argparse, os, re
 
 # def main(args):
-# 	with open(args.input,'r') as infile:
-# 		with open(args.output, 'w') as outfile:
-# 			for s in infile:
-# 				if re.match("(.*)<attr name="Deff_2">(.*)", s):
-# 					outfile.write(s.replace("</attr>", " 1 1 1 1</attr>"))
-# 				
+#     with open(args.input,'r') as infile:
+#         with open(args.output, 'w') as outfile:
+#             for s in infile:
+#                 if re.match("(.*)<attr name="Deff_2">(.*)", s):
+#                     outfile.write(s.replace("</attr>", " 1 1 1 1</attr>"))
+#                 
 
 if __name__ == '__main__':
 #     parser = argparse.ArgumentParser()
@@ -19,11 +19,11 @@ if __name__ == '__main__':
 
 # python ExampleEditorForAndrew.py --input test.xml --fold 2 --output test2.xml
 
-	with open("FluHawkes/xml/fluCombi_geo_BMDS_Hawkes_dim2.xml",'r') as infile:
-		with open("FluHawkes/xml/fluCombi_geo_BMDS_Hawkes_dim7.xml", 'w') as outfile:
-			for s in infile:
-				if re.match("(.*)<attr name=\"Deff_2\">(.*)", s):
-					outfile.write(s.replace("</attr>", " 1 1 1 1 1</attr>"))
-				else:
-					outfile.write(s)
-				
+    with open("FluHawkes/xml/cv7.xml",'r') as infile:
+        with open("FluHawkes/xml/cv8.xml", 'w') as outfile:
+            for s in infile:
+                if re.match("(.*)<attr name=\"Deff_2\">(.*)", s):
+                    outfile.write(s.replace("</attr>", " 1</attr>"))
+                else:
+                    outfile.write(s)
+                

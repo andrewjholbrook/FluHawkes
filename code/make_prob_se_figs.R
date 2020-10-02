@@ -38,7 +38,7 @@ df <- df[order(Probs,decreasing = TRUE),]
 world <- map_data('world') %>% filter(region != "Antarctica") %>% fortify
 gg    <- ggplot(data=world,aes(x=long,y=lat,group=group)) +
   geom_polygon(fill="white",color="black",size=0.2) + theme_void() +
-  geom_jitter(data = df, aes(x=long,y=lat,color=`Posterior\nmean\nprobability`),inherit.aes = FALSE,width=3,height = 3,size=0.5) +
+  geom_jitter(data = df, aes(x=long,y=lat,color=`Posterior\nmean\nprobability`),inherit.aes = FALSE,width=3,height = 3,size=0.5,alpha=0.8) +
   scale_colour_distiller(palette="Spectral") +
   #scale_alpha_continuous(range = c(1,0.6),guide=FALSE) +
   #labs(x=NULL,y=NULL) +
@@ -54,7 +54,7 @@ colors <- RColorBrewer::brewer.pal(9,"Spectral")[9:1]
 gg2 <- ggplot(data = df,aes(x=`Posterior\nmean\nprobability`)) +
   #geom_density(fill=df$`Posterior\nmean\nprobability`)+
   #scale_colour_distiller(palette="Spectral") +
-  geom_histogram(fill=colors,bins = 9)+ xlab("")+
+  geom_histogram(fill=colors,bins = 9,alpha=0.8)+ xlab("")+
   ylab("Counts") +
   theme_classic()
 gg2

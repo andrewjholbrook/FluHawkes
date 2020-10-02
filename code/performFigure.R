@@ -25,6 +25,8 @@ gg_color_hue <- function(n) {
 
 ###################################################################
 
+colors <- RColorBrewer::brewer.pal(11,"Spectral")[11:1]
+
 bench_df <- read.table("~/FluHawkes/data/report.txt", quote="\"", comment.char="")
 bench_df <- bench_df[,c(2,3,9)]
 bench_df$V2[c(1,2)] <- 1
@@ -54,25 +56,25 @@ df <- df1[df1$Cores!=0 & df1$SIMD == "AVX",]
 df$SIMD <- droplevels.factor(df$SIMD)
 colnames(df)[2] <- "Method"
 
-
+colors <- RColorBrewer::brewer.pal(11,"Spectral")[11:1]
 
 gg <- ggplot(df, aes(x=Cores,y=Speedup)) +
-  geom_line(color=gg_color_hue(11)[7],size=1.1) +
-  geom_point(data=df3[1,],mapping = aes(x=Cores,y=Speedup),inherit.aes = FALSE,color=gg_color_hue(11)[1]) +
-  geom_point(data=df3[2,],mapping = aes(x=Cores,y=Speedup),inherit.aes = FALSE,color=gg_color_hue(11)[4]) +
+  geom_line(color=colors[8],size=1.1) +
+  geom_point(data=df3[1,],mapping = aes(x=Cores,y=Speedup),inherit.aes = FALSE,color=colors[2]) +
+  geom_point(data=df3[2,],mapping = aes(x=Cores,y=Speedup),inherit.aes = FALSE,color=colors[4]) +
   geom_text(aes(x=3.95,y=0.55,label="Non-vectorized"),
              inherit.aes = FALSE,show.legend = FALSE,
-             check_overlap = TRUE,color=gg_color_hue(11)[1]) +
+             check_overlap = TRUE,color=colors[2]) +
   geom_text(aes(x=2.1,y=0.85,label="SSE"),
             inherit.aes = FALSE,show.legend = FALSE,
-            check_overlap = TRUE,color=gg_color_hue(11)[4]) +
+            check_overlap = TRUE,color=colors[4]) +
   geom_text(aes(x=2.1,y=3,label="AVX"),
             inherit.aes = FALSE,show.legend = FALSE,
-            check_overlap = TRUE,color=gg_color_hue(11)[7]) +
+            check_overlap = TRUE,color=colors[8]) +
   geom_text(aes(x=2.1,y=100,label="GPU"),
             inherit.aes = FALSE,show.legend = FALSE,
-            check_overlap = TRUE,color=gg_color_hue(11)[11]) +
-  geom_line(data=df2,aes(x=Cores,y=Speedup),inherit.aes = FALSE, color=gg_color_hue(11)[11],
+            check_overlap = TRUE,color=colors[10]) +
+  geom_line(data=df2,aes(x=Cores,y=Speedup),inherit.aes = FALSE, color=colors[10],
             size=1.1) +
   scale_x_continuous(breaks=c(1,2,4,6,8,10,12,14,16,18),
                      labels = c("1","2",'4','6','8','10','12',"14","16","18"))+
@@ -121,6 +123,7 @@ df$Threads = factor(df$Cores,levels(df$Cores)[c(2:11,1)])
 
 gg2 <- ggplot(df,aes(x=N,y=Seconds,color=Threads)) +
   geom_smooth(se=FALSE) +
+  scale_color_manual(values = colors)+
   ylab('Seconds per gradient evaluation') +
   xlab('Number of data points')+
   coord_cartesian(ylim=c(0,10),xlim=c(10000,85000)) +

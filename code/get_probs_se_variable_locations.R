@@ -5,18 +5,18 @@ library(readr)
 library(plyr)
 library(reshape2)
 
-latent_dim <- 2
+latent_dim <- 6
 
 # get coordinates and times
-h1_locations <- read_table2("output/h1_locations_2.log", 
+h1_locations <- read_table2(paste0("output/h1_locations_",latent_dim,".log"), 
                             skip = 3)
-h3_locations <- read_table2("output/h3_locations_2.log", 
+h3_locations <- read_table2(paste0("output/h3_locations_",latent_dim,".log"), 
                             skip = 3)
-vic_locations <- read_table2("output/vic_locations_2.log", 
+vic_locations <- read_table2(paste0("output/vic_locations_",latent_dim,".log"), 
                              skip = 3)
-yam_locations <- read_table2("output/yam_locations_2.log", 
+yam_locations <- read_table2(paste0("output/yam_locations_",latent_dim,".log"), 
                              skip = 3)
-parameters <- read_delim("output/parameters2.log", 
+parameters <- read_delim(paste0("output/parameters",latent_dim,".log"), 
                          "\t", escape_double = FALSE, trim_ws = TRUE, 
                          skip = 3)
 
@@ -33,11 +33,12 @@ df$strain <- c( rep("h1n1",1161),
 
 # remove burnin and remove state counts
 S             <- dim(h1_locations)[1]
-h1_locations  <- h1_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
-h3_locations  <- h3_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
-yam_locations <- yam_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
-vic_locations <- vic_locations[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
-parameters    <- parameters[round(seq.int(from=ceiling(S*.5),to=S,length.out=100)),-1]
+percBurn <- 0.9
+h1_locations  <- h1_locations[round(seq.int(from=ceiling(S*percBurn),to=S,length.out=100)),-1]
+h3_locations  <- h3_locations[round(seq.int(from=ceiling(S*percBurn),to=S,length.out=100)),-1]
+yam_locations <- yam_locations[round(seq.int(from=ceiling(S*percBurn),to=S,length.out=100)),-1]
+vic_locations <- vic_locations[round(seq.int(from=ceiling(S*percBurn),to=S,length.out=100)),-1]
+parameters    <- parameters[round(seq.int(from=ceiling(S*percBurn),to=S,length.out=100)),-1]
 
 # get list of locations matrices
 S <- dim(h1_locations)[1]
@@ -78,7 +79,7 @@ for (i in 1:S) {
                                                   gpu = 2,dimension=latent_dim)
 }
 #saveRDS(post_prob_child[order(df2$X1),],file = "output/post_processed/h1n1_probs_se.rds")
-saveRDS(post_prob_child,file = "output/post_processed/h1n1_probs_se.rds")
+saveRDS(post_prob_child,file = paste0("output/post_processed/h1n1_probs_se_",latent_dim,".rds"))
 
 
 
@@ -99,7 +100,7 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child,file = "output/post_processed/h3n2_probs_se.rds")
+saveRDS(post_prob_child,file = paste0("output/post_processed/h3n2_probs_se_",latent_dim,".rds"))
 
 
 df2 <- df[df$strain=="vic",]
@@ -119,7 +120,7 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child,file = "output/post_processed/vic_probs_se.rds")
+saveRDS(post_prob_child,file = paste0("output/post_processed/vic_probs_se_",latent_dim,".rds"))
 
 
 df2 <- df[df$strain=="yam",]
@@ -139,6 +140,6 @@ for (i in 1:S) {
                                                   params = pst[,i],
                                                   gpu = 2,dimension=latent_dim)
 }
-saveRDS(post_prob_child,file = "output/post_processed/yam_probs_se.rds")
+saveRDS(post_prob_child,file = paste0("output/post_processed/yam_probs_se_",latent_dim,".rds"))
 
 

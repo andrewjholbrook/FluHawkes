@@ -6,25 +6,25 @@ library(coda)
 library(ggplot2)
 library(ggforce)
 
-h1_locations <- read_table2("output/h1_locations_2.log", 
+h1_locations <- read_table2("output/best_so_far/h1_locations_2.log", 
                                    skip = 3)
-h3_locations <- read_table2("output/h3_locations_2.log", 
+h3_locations <- read_table2("output/best_so_far/h3_locations_2.log", 
                               skip = 3)
-vic_locations <- read_table2("output/vic_locations_2.log", 
+vic_locations <- read_table2("output/best_so_far/vic_locations_2.log", 
                               skip = 3)
-yam_locations <- read_table2("output/yam_locations_2.log", 
+yam_locations <- read_table2("output/best_so_far/yam_locations_2.log", 
                                skip = 3)
-countries <- read_table2("output/countries_small_geo_BMDS_Hawkes_Country.locations.log", 
+countries <- read_table2("output/best_so_far/countries_small_geo_BMDS_Hawkes_Country.locations.log", 
                          skip = 3)
 
 # remove burnin
 S <- min(dim(h1_locations)[1],dim(h3_locations)[1] ,dim(yam_locations)[1],dim(vic_locations)[1]  ,dim(countries)[1] )
-h1_locations <- h1_locations[ceiling(S*.1):S,]
-h3_locations <- h3_locations[ceiling(S*.1):S,]
-yam_locations <- yam_locations[ceiling(S*.1):S,]
-vic_locations <- vic_locations[ceiling(S*.1):S,]
+h1_locations <- h1_locations[ceiling(S*.5):S,]
+h3_locations <- h3_locations[ceiling(S*.5):S,]
+yam_locations <- yam_locations[ceiling(S*.5):S,]
+vic_locations <- vic_locations[ceiling(S*.5):S,]
 #c <- dim(countries)[1]
-countries <- countries[ceiling(S*.1):S,]
+countries <- countries[ceiling(S*.5):S,]
 
 # take first row 
 h1_locations <- h1_locations[2,-1]
@@ -61,7 +61,7 @@ S  <- dim(dat)[1]
 
 #dat <- split(dat, seq(nrow(dat)))
 dat <- matrix(dat,ncol=d,byrow=TRUE)
-row.names(dat) <- locs
+row.names(dat) <- locs[1:4733]
 
 cont <- matrix(unlist(countries),
              ncol=d,byrow=TRUE)
@@ -79,10 +79,10 @@ cont <- as.data.frame(cont)
 # }
 
 # add probs_se
-h1n1 <- readRDS(file = "output/post_processed/h1n1_probs_se.rds")
-h3n2 <- readRDS(file = "output/post_processed/h3n2_probs_se.rds")
-yam <- readRDS(file = "output/post_processed/yam_probs_se.rds")
-vic <- readRDS(file = "output/post_processed/vic_probs_se.rds")
+h1n1 <- readRDS(file = "output/post_processed/h1n1_probs_se_6.rds")
+h3n2 <- readRDS(file = "output/post_processed/h3n2_probs_se_6.rds")
+yam <- readRDS(file = "output/post_processed/yam_probs_se_6.rds")
+vic <- readRDS(file = "output/post_processed/vic_probs_se_6.rds")
 h1n1[h1n1==100] <- NA
 h3n2[h3n2==100] <- NA
 yam[yam==100] <- NA
@@ -98,7 +98,7 @@ df <- data.frame(X1=dat[,1],X2=dat[,2],`Posterior\nmean\nprobability`=`Posterior
 df <- df[order(Probs,decreasing = TRUE),]
 
 gg <- ggplot(df, aes(x=X1,y=X2,color=`Posterior\nmean\nprobability`)) +
-  geom_point(size=1,position = position_jitternormal(sd_x = 0.5,sd_y = 0.5)) +
+  geom_point(size=1,position = position_jitternormal(sd_x = 0.5,sd_y = 0.5),alpha=0.8) +
   scale_colour_distiller(palette="Spectral") +
   geom_text(data=cont,
             mapping=aes(x=V1,y=V2,
